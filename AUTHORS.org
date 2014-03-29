@@ -1,0 +1,10 @@
+
+Following persons have contributed to Open Test Robot Platform:
+- Antti Jääskeläinen (https://github.com/jaaskel9)
+- Antti Kervinen (https://github.com/askervin)
+- Heikki Virtanen (https://github.com/hessuvi)
+- Jaakko Hannukainen
+- Jarkko Mikkola
+- Kalle Ryynänen
+- Osku Reinikainen (https://github.com/OMKR)
+- Ville Ilvonen (https://github.com/vilvo)
