@@ -1,0 +1,83 @@
+
+* Open Test Robot Platform - The Architecture
+
+Open Test Robot Platform complies with the following component based
+architecture. 
+
+#+CAPTION: Open Test Robot Platform components and their relations
+[[./components.png]]
+
+** Core components defined by the platform
+
+*** User interaction API
+
+*** Gesture API
+
+*** Visual API
+
+*** Robot API
+
+*** Image API
+
+*** System and coordinate handling configuration
+
+This component manages information which is collected during system setup
+and used by the platform components.  It contains at least
+- modules for the roles of the architecture
+- robot coordinates for the reference points of the device under test
+  + top left corner of the display
+  + top right corner of the display
+  + bottom left corner of the display
+- additional named locations (power switch for example)
+- functions for coordinate transformations
+- safe operation and free movement regions inside robot working space
+
+** Third party components
+
+These are not part of the platform itself but they provide functionality
+which is mandatory for a fully functional system.
+
+*** Icon recognition
+
+*** Text recognition
+
+*** Device screenshot API
+
+*** Camera
+
+*** Robot
+
+** Associated components
+
+Associated components are not part of the platform, meaning that their
+interfaces and implementation are left open. However, they are still
+necessary for the use of the platform in automated testing, either
+controlling core modules or being controlled by them.
+
+*** Test automation
+
+Test automation is the component that controls the test run, whether a
+script, model-based test generator or something else. The tester may fill
+this slot by whatever test automation they are already using.
+
+The module sends high-level commands as inputs to the user interaction API
+and receives processed outputs in return. It may also make use of the
+environmental control \& measurement module(s) as needed.
+
+*** SUT
+
+The system under test (SUT) is whatever is to be tested or otherwise
+controlled. It is controlled by the robot and its state can be examined by a
+camera or instrumentation.
+
+** External components
+
+The large test automation system may include external components, but the
+platform is functional without them. For example, the environmental control
+\& measurement component (or a collection of such components) can be used to
+control the test environment and thereby indirectly affect the SUT, as well
+as collect various data about the SUT and environment. In practice, it may
+have an architecture similar to the robot/camera structure of the
+architecture. While some features belonging to the purview of this component
+are often needed in testing, the exact requirements vary so much that there
+is no sense in providing a fixed interface, architecture or implementation.
