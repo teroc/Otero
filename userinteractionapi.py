@@ -1,3 +1,26 @@
+# Copyright (c) 2014 Tampere University of Technology,
+#                    Intel Corporation,
+#                    OptoFidelity,
+#                    and authors
+# 
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 # coordinate handler helpers
 
 # returns pos
@@ -93,7 +116,7 @@ class UserInteractionApi(object):
 	# fingerRadius: float; finger radius in millimeters
 	# touchAngle
 	
-	def tapPos(self, pos, duration=0.0, **kwargs):
+	def tap(self, pos, duration=0.0, **kwargs):
 		raise NotImplementedError
 	
 	def tapElement(self, element=WORK_AREA, pos=(0.5, 0.5), duration=0.0, **kwargs):
@@ -122,7 +145,7 @@ class UserInteractionApi(object):
 	# beginDuration: minimum duration to hold between press and move
 	# endDuration:   minimum duration to hold between move and release
 	
-	def scrollPos(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, *kwargs):
+	def scroll(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, *kwargs):
 		raise NotImplementedError
 	
 	# is offset needed?
@@ -156,7 +179,7 @@ class UserInteractionApi(object):
 	# angle:    direction of flick gesture
 	# flickPos: beginning position to flick within target area 
 	
-	def flickPos(self, pos, angle=ANGLE_UP, *kwargs):
+	def flick(self, pos, angle=ANGLE_UP, *kwargs):
 		raise NotImplementedError
 	
 	def flickElement(self, element=WORK_AREA, angle=ANGLE_UP, flickPos=(0.5, 0.5), *kwargs):
@@ -184,7 +207,7 @@ class UserInteractionApi(object):
 	# direction:  direction of rotation
 	# arcAngle:   angle of arc drawn by rotation
 	
-	def rotatePos(self, centerPos, beginPos, direction=DIR_COUNTERCLOCKWISE, arcAngle=360, *kwargs):
+	def rotate(self, centerPos, beginPos, direction=DIR_COUNTERCLOCKWISE, arcAngle=360, *kwargs):
 		raise NotImplementedError
 	
 	# is offset needed?
@@ -217,38 +240,38 @@ class UserInteractionApi(object):
 d = UserInteractionApi()
 
 # tap coordinate
-d.tapPos((0.5, 0.7))                # pos
+d.tap((0.5, 0.7))                # pos
 d.tapElement(Location(0.5, 0.7))    # element
 d.tapElement(pos=(0.5, 0.7))        # element
 
 # tap center of text
-d.tapPos(d.getPos(d.locateText("abc"))) # pos w. bboxes
-d.tapPos(Text("abc").getPos())          # pos w. elements
+d.tap(d.getPos(d.locateText("abc"))) # pos w. bboxes
+d.tap(Text("abc").getPos())          # pos w. elements
 d.tapElement(Text("abc"))               # element
 d.tapText("abc")                        # text
 
 # tap beginning of text
-d.tapPos(d.getPos(d.locateText("abc"), (0.1, 0.5))) # pos w. bboxes
-d.tapPos(Text("abc").getPos(0.1, 0.5))              # pos w. elements
+d.tap(d.getPos(d.locateText("abc"), (0.1, 0.5))) # pos w. bboxes
+d.tap(Text("abc").getPos(0.1, 0.5))              # pos w. elements
 d.tapElement(Text("abc"), (0.1, 0.5))               # element
 d.tapText("abc", (0.1, 0.5))                        # text
 
 
 # hold coordinate
-d.tapPos((0.5, 0.7), holdTime=2.0) # parameter in tap
+d.tap((0.5, 0.7), holdTime=2.0) # parameter in tap
 
 
 # rotate image full circle counterclockwise from top with pos
 bbox = d.locateImage(imageId)
 x, y = d.getPos(bbox)
-d.rotatePos((x, y), (x, y + 0.8*(bbox[0][1] - y)))
+d.rotate((x, y), (x, y + 0.8*(bbox[0][1] - y)))
 # rotate image full circle counterclockwise from top with image
 d.rotateImage(imageId)
 
 # rotate image quarter circle clockwise from left with pos
 bbox = d.locateImage(imageId)
 x, y = d.getPos(bbox)
-d.rotatePos((x, y), (x + 0.8*(bbox[0][0] - x, y)), direction=DIR_CLOCKWISE, arcAngle=90)
+d.rotate((x, y), (x + 0.8*(bbox[0][0] - x, y)), direction=DIR_CLOCKWISE, arcAngle=90)
 # rotate image quarter circle clockwise from left with bbox
 d.rotateImage(image, beginAngle=ANGLE_LEFT, direction=DIR_CLOCKWISE, arcAngle=90)
 
