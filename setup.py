@@ -10,6 +10,6 @@ setup(
     author_email = 'antti.kervinen@intel.com',
     packages     = ['opentestrobot'],
     package_data = {'opentestrobot': ['__init__.py',
-                                      'gestureapi.py',
-                                      'swemulation.py',
-                                      'userinteractionapi.py']})
+                                      'gesture.py',
+                                      'vision.py',
+                                      'interaction.py']})
