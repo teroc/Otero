@@ -112,6 +112,7 @@ class UserInteractionApi(object):
 	# duration: minimum time to hold between press and release, 0.0 indicates ordinary tap 
 	
 	# kwargs recommendations
+	# bypassSafety: bool; ignore safety restrictions in movement area
 	# pressure:     float; tap pressure (0.0 no pressure, 1.0 greatest safe pressure)
 	# fingerRadius: float; finger radius in millimeters
 	# touchAngle
@@ -128,9 +129,6 @@ class UserInteractionApi(object):
 	def tapText(self, text, pos=(0.5, 0.5), duration=0.0, **kwargs):
 		raise NotImplementedError
 	
-	
-	# unconfirmed methods
-	
 	###########################################
 	# scroll (and drag) gestures              #
 	# (sharp begin, straight move, sharp end) #
@@ -145,21 +143,24 @@ class UserInteractionApi(object):
 	# beginDuration: minimum duration to hold between press and move
 	# endDuration:   minimum duration to hold between move and release
 	
+	# kwargs recommendations
+	# bypassSafety: bool; ignore safety restrictions in movement area
+	# scrollDuration: duration of move
+	
 	def scroll(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, *kwargs):
 		raise NotImplementedError
 	
-	# is offset needed?
-	
-	def scrollElement(self, element=WORK_AREA, angle=ANGLE_UP, length=0.8, beginDuration=0.0, endDuration=0.0, *kwargs):
+	def scrollElement(self, beginElement=WORK_AREA, endElement=WORK_AREA, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, beginDuration=0.0, endDuration=0.0, *kwargs):
 		raise NotImplementedError
 	
-	# is this variant needed?
-	def scrollImage(self, image, angle=ANGLE_UP, length=0.8, beginDuration=0.0, endDuration=0.0, *kwargs):
+	def scrollImage(self, beginImage, endImage=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, beginDuration=0.0, endDuration=0.0, *kwargs):
 		raise NotImplementedError
 	
-	# is this variant needed?
-	def scrollText(self, text, angle=ANGLE_UP, length=0.8, beginDuration=0.0, endDuration=0.0, *kwargs):
+	def scrollText(self, beginText, endText=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, beginDuration=0.0, endDuration=0.0, *kwargs):
 		raise NotImplementedError
+	
+	
+	# unconfirmed methods
 	
 	#############################################
 	# swipe gestures                            #

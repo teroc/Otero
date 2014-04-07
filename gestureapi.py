@@ -27,18 +27,33 @@ class GestureApi(object):
 	###########################
 	
 	# arguments
-	# element:  element to tap
 	# pos:      position to tap within target area (entire work area for tapPos)
 	# duration: minimum time to hold between press and release, 0.0 indicates ordinary tap 
 	
 	# kwargs recommendations
+	# bypassSafety: bool; ignore safety restrictions in movement area
 	# pressure:     float; tap pressure (0.0 no pressure, 1.0 greatest safe pressure)
 	# fingerRadius: float; finger radius in millimeters
 	# touchAngle
 	
 	def tap(self, pos, duration=0.0, **kwargs):
 		raise NotImplementedError
+
+	###########################################
+	# scroll (and drag) gestures              #
+	# (sharp begin, straight move, sharp end) #
+	###########################################
 	
-	def tapElement(self, element=WORK_AREA, pos=(0.5, 0.5), duration=0.0, **kwargs):
+	# arguments
+	# beginPos:      beginning position of scroll
+	# endPos:        ending position of scroll
+	# beginDuration: minimum duration to hold between press and move
+	# endDuration:   minimum duration to hold between move and release
+	
+	# kwargs recommendations
+	# bypassSafety: bool; ignore safety restrictions in movement area
+	# scrollDuration: duration of move
+	
+	def scroll(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, *kwargs):
 		raise NotImplementedError
 
