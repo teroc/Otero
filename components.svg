@@ -232,6 +232,20 @@
          transform="scale(-0.6,-0.6)"
          inkscape:connector-curvature="0" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-6"
+       style="overflow:visible">
+      <path
+         id="path4321-0"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -240,9 +254,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5395044"
-     inkscape:cx="353.68988"
-     inkscape:cy="521.44427"
+     inkscape:zoom="1.32"
+     inkscape:cx="288.11878"
+     inkscape:cy="142.59321"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -444,7 +458,7 @@
     <g
        id="g7778"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Arial;-inkscape-font-specification:Arial"
-       transform="translate(-1.1324883e-6,70.000001)">
+       transform="translate(-60.000001,70.000001)">
       <rect
          ry="34.119202"
          y="443.24298"
@@ -734,6 +748,41 @@
            sodipodi:role="line"
            id="tspan3184">API</tspan></text>
     </g>
+    <g
+       transform="translate(360,1.9469578e-5)"
+       id="g3113">
+      <rect
+         id="rect3115"
+         width="118.04428"
+         height="68.044258"
+         x="190.97786"
+         y="513.34003"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.95572865;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;font-family:Arial;-inkscape-font-specification:Arial" />
+      <text
+         xml:space="preserve"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+         x="250"
+         y="532.36218"
+         id="text3117"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan3135">Device</tspan><tspan
+           sodipodi:role="line"
+           id="tspan3137">control</tspan><tspan
+           sodipodi:role="line"
+           id="tspan3139">API</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;color:#000000;stroke-miterlimit:4;stroke-dasharray:4, 4;stroke-dashoffset:0;marker:none;marker-end:url(#Arrow2Mend);visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       d="m 556.25727,559.02212 -96.60269,75.13543"
+       id="path3141"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:connection-start="#g3113"
+       inkscape:connection-start-point="d4"
+       inkscape:connection-end="#g7783"
+       inkscape:connection-end-point="d4"
+       transform="translate(9.9999999,22.362182)" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -764,7 +813,7 @@
     <path
        transform="translate(-9.9999999,-22.362182)"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:4, 4;stroke-dashoffset:0;marker-end:url(#Arrow2Mend);display:inline;font-family:Arial;-inkscape-font-specification:Arial"
-       d="m 520.95637,581.24642 -61.91274,72.23153"
+       d="m 475.37748,581.48139 -30.75496,71.76159"
        id="path9322"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="3"

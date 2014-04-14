@@ -15,9 +15,24 @@ architecture.
 
 *** Visual API
 
-*** Robot API
+    (Name suggestions: Perception API, Observation API)
 
 *** Image API
+
+*** Robot API
+
+In most cases, this API is not a separate component but merged into Gesture
+API, because there are too much variation and no generally accepted robot
+control semantics. For example, some robot manufactures have implemented
+some gestures in firmware.
+
+Platform provides a simple mock robot interface for testing purposes and as
+an example for DIY robot makers. The API have following methods:
+- (get) current position in robot coordinates
+- (init) move robot to initial position
+- (move) absolute and relative movement
+- (execute) timed complex movement along a path defined by a position
+  sequence.
 
 *** System and coordinate handling configuration
 
@@ -28,6 +43,8 @@ and used by the platform components.  It contains at least
   + top left corner of the display
   + top right corner of the display
   + bottom left corner of the display
+  + bottom right corner of the display (This is used to estimate the
+    accuracy of the setup data.)
 - additional named locations (power switch for example)
 - functions for coordinate transformations
 - safe operation and free movement regions inside robot working space
@@ -42,6 +59,8 @@ which is mandatory for a fully functional system.
 *** Text recognition
 
 *** Device screenshot API
+
+*** Device control API
 
 *** Camera
 
@@ -74,7 +93,7 @@ camera or instrumentation.
 
 The large test automation system may include external components, but the
 platform is functional without them. For example, the environmental control
-\& measurement component (or a collection of such components) can be used to
+& measurement component (or a collection of such components) can be used to
 control the test environment and thereby indirectly affect the SUT, as well
 as collect various data about the SUT and environment. In practice, it may
 have an architecture similar to the robot/camera structure of the
