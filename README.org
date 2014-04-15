@@ -9,7 +9,7 @@
 *** Recommended
 
 - fMBT for software emulation of robot and camera. (Available from
-  https://github.com/01org/fMBT.)
+  [[https://github.com/01org/fMBT]].)
 
 - Sphinx for building documentation (python-sphinx package in Debian/Ubuntu).
 
