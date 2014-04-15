@@ -2,16 +2,22 @@
 
 ** Prerequisites
 
-- Python 2.6 or later.
+*** Mandatory
+
+- Python 2.7 or later.
+
+*** Recommended
+
+- fMBT for software emulation of robot and camera. (Available from
+  https://github.com/01org/fMBT.)
 
 - Sphinx for building documentation (python-sphinx package in Debian/Ubuntu).
 
-- fMBT for software emulation of robot and camera.
+** Building and installing
 
-
-** Building
-
-Build documentation
+*** TODO Using the platform directly in development environment
+    
+*** Building documentation
 
 #+BEGIN_SRC shell-script
 cd doc
@@ -20,11 +26,9 @@ make html
 
 Main page can be found from doc/_build/opentestrobot.html
 
+*** System wide installation
 
-** Installing
-
-Run as root
-
+Normal Python package installation. Run as root
 #+BEGIN_SRC shell-script
 python setup.py install
 #+END_SRC
