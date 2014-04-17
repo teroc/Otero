@@ -58,6 +58,6 @@ class GestureApi(object):
     # bypassSafety: bool; ignore safety restrictions in movement area
     # scrollDuration: duration of move
     
-    def scroll(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, *kwargs):
+    def scroll(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, **kwargs):
         raise NotImplementedError
 
