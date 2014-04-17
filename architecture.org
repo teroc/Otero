@@ -9,25 +9,25 @@ architecture.
 
 ** Core components defined by the platform
 
-*** User interaction API
+*** User interaction module
 
-*** Gesture API
+*** Gesture module
 
-*** Visual API
+*** Observation module
 
-    (Name suggestions: Perception API, Observation API)
+    (Name suggestions: Perception module, Observation module)
 
-*** Image API
+*** Image capture module
 
-*** Robot API
+*** Robot control module
 
-In most cases, this API is not a separate component but merged into Gesture
-API, because there are too much variation and no generally accepted robot
+In most cases, this module is not a separate component but merged into Gesture
+module, because there are too much variation and no generally accepted robot
 control semantics. For example, some robot manufactures have implemented
 some gestures in firmware.
 
 Platform provides a simple mock robot interface for testing purposes and as
-an example for DIY robot makers. The API have following methods:
+an example for DIY robot makers. The module have following methods:
 - (get) current position in robot coordinates
 - (init) move robot to initial position
 - (move) absolute and relative movement
