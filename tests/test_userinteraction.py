@@ -25,10 +25,33 @@
 # pylint: disable = R0902, R0903, R0904, R0911, R0912, R0913, R0914, R0915
 # pylint: disable = W0212
 
-"""
-opentestrobot - APIs for GUI testing with robots
-"""
+import unittest
+import opentestrobot
+import os
+import fmbtgti
 
-from userinteraction import UserInteraction
-import gesture
-import vision
+moduleDir = os.path.dirname(__file__)
+
+class TestSwEmulation(unittest.TestCase):
+    def setup(self):
+        pass
+
+    def tearDown(self):
+        pass
+
+    def testTap(self):
+        """Test UserInteraction API with simulated software emulation
+        """
+        gti = fmbtgti.GUITestInterface()
+        gti.setConnection(fmbtgti.SimulatedGUITestConnection(
+            [os.path.join(moduleDir, "images", "nexus-s-dial.png")]))
+
+        ui = opentestrobot.UserInteraction(
+            opentestrobot.gesture.SwEmulation(gti),
+            opentestrobot.vision.SwEmulation(gti))
+
+        ui.tap((0.5, 0.5)) # tap the middle of the screen
+
+        lastEvent = gti.connection().history()[-1]
+        assert lastEvent[1] == "sendTap"
+        assert lastEvent[2] == (240, 400)
