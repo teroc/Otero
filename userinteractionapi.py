@@ -2,17 +2,17 @@
 #                    Intel Corporation,
 #                    OptoFidelity,
 #                    and authors
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
 # to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
-# 
+#
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,7 +36,7 @@ def getClockwiseArcAngle(arcAngle=360):
 
 def getCounterclockwiseArcAngle(arcAngle=360):
     return -abs(arcAngle)
-    
+
 
 # all element objects are immutable
 
@@ -47,14 +47,14 @@ class Element(object):
 class Location(Element):
     def __init__(self, pos):
         self._pos = pos
-    
+
     def getPos(self, pos):
         return self._pos
 
 class Area(Element):
     def __init__(self, upperLeftPos, lowerRightPos):
         self._bbox = (upperLeftPos, lowerRightPos)
-    
+
     def getPos(self, pos):
         return getPos(self._bbox, pos)
 
@@ -71,7 +71,7 @@ class Text(Area):
     def __init__(self, text):
         # TODO
         pass
-    
+
     def getWords(self):
         # TODO
         pass
@@ -81,7 +81,7 @@ class Word(Text):
     def __init__(self, word):
         # TODO
         pass
-    
+
     def getWords(self):
         return (self,)
 
@@ -95,51 +95,51 @@ class UserInteractionApi(object):
     # angle:     float;                 angle in degrees, clockwise from top unless otherwise indicated
     # distance:  float;                 length of gesture as proportion of maximal possible, maximum depends on gesture
     # duration:  float;                 time in seconds
-    
+
     WORK_AREA = Area((0, 0), (1, 1))
-    
+
     ANGLE_UP = 0.0
     ANGLE_RIGHT = 90.0
     ANGLE_DOWN = 180.0
     ANGLE_LEFT = 270.0
-    
-    
+
+
     # confirmed methods
-    
+
     ###########################
     # tap (and hold) gestures #
     ###########################
-    
+
     # arguments
     # element:  element to tap
     # image:    image to tap
     # text:     text to tap
     # pos:      position to tap within target area (entire work area for tap)
-    # duration: minimum time to hold between press and release, 0.0 indicates ordinary tap 
-    
+    # duration: minimum time to hold between press and release, 0.0 indicates ordinary tap
+
     # kwargs recommendations
     # bypassSafety: bool; ignore safety restrictions in movement area
     # pressure:     float; tap pressure (0.0 no pressure, 1.0 greatest safe pressure)
     # fingerRadius: float; finger radius in millimeters
     # touchAngle
-    
+
     def tap(self, pos, duration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     def tapElement(self, element=WORK_AREA, pos=(0.5, 0.5), duration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     def tapImage(self, image, pos=(0.5, 0.5), duration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     def tapText(self, text, pos=(0.5, 0.5), duration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     ###########################################
     # drag gestures                           #
     # (sharp begin, straight move, sharp end) #
     ###########################################
-    
+
     # arguments
     # beginElement:  element within which drag begins
     # endElement:    element within which drag ends (if angle is not given)
@@ -153,31 +153,31 @@ class UserInteractionApi(object):
     # distance:      distance to drag as proportion of distance from begin towards edge of work area, effective only if angle is given
     # beginDuration: minimum duration to hold between press and move
     # endDuration:   minimum duration to hold between move and release
-    
+
     # kwargs recommendations
     # bypassSafety: bool; ignore safety restrictions in movement area
     # pressure:     float; drag pressure (0.0 no pressure, 1.0 greatest safe pressure)
     # fingerRadius: float; finger radius in millimeters
     # dragDuration: duration of move
-    
+
     def drag(self, beginPos, endPos, beginDuration=0.0, endDuration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     def dragElement(self, beginElement=WORK_AREA, endElement=WORK_AREA, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, beginDuration=0.0, endDuration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     def dragImage(self, beginImage, endImage=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, beginDuration=0.0, endDuration=0.0, **kwargs):
         raise NotImplementedError
-    
+
     def dragText(self, beginText, endText=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, beginDuration=0.0, endDuration=0.0, **kwargs):
         raise NotImplementedError
-    
-    
+
+
     #############################################
     # swipe gestures                            #
     # (smooth begin, straight move, smooth end) #
     #############################################
-    
+
     # arguments
     # beginElement:  element within which swipe begins
     # endElement:    element within which swipe ends (if angle is not given)
@@ -189,31 +189,31 @@ class UserInteractionApi(object):
     # endPos:        ending position of swipe within target area (entire work area for swipe)
     # angle:         direction of swipe gesture, if given pre-empts parameters for end position
     # distance:      distance to swipe as proportion of distance from begin towards edge of work area, effective only if angle is given
-    
+
     # kwargs recommendations
     # bypassSafety: bool; ignore safety restrictions in movement area
     # pressure:     float; swipe pressure (0.0 no pressure, 1.0 greatest safe pressure)
     # fingerRadius: float; finger radius in millimeters
     # dragDuration: duration of move
-    
+
     def swipe(self, beginPos, endPos, **kwargs):
         raise NotImplementedError
-    
+
     def swipeElement(self, beginElement=WORK_AREA, endElement=WORK_AREA, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, **kwargs):
         raise NotImplementedError
-    
+
     def swipeImage(self, beginImage, endImage=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, **kwargs):
         raise NotImplementedError
-    
+
     def swipeText(self, beginText, endText=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, **kwargs):
         raise NotImplementedError
-    
-    
+
+
     ############################################
     # flick gestures                           #
     # (sharp begin, straight move, smooth end) #
     ############################################
-    
+
     # arguments
     # beginElement:  element within which flick begins
     # endElement:    element within which flick ends (if angle is not given)
@@ -225,33 +225,33 @@ class UserInteractionApi(object):
     # endPos:        ending position of flick within target area (entire work area for flick)
     # angle:         direction of flick gesture, if given pre-empts parameters for end position
     # distance:      distance to flick as proportion of distance from begin towards edge of work area, effective only if angle is given
-    
+
     # kwargs recommendations
     # bypassSafety: bool; ignore safety restrictions in movement area
     # pressure:     float; flick pressure (0.0 no pressure, 1.0 greatest safe pressure)
     # fingerRadius: float; finger radius in millimeters
     # dragDuration: duration of move
-    
+
     def flick(self, beginPos, endPos, **kwargs):
         raise NotImplementedError
-    
+
     def flickElement(self, beginElement=WORK_AREA, endElement=WORK_AREA, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, **kwargs):
         raise NotImplementedError
-    
+
     def flickImage(self, beginImage, endImage=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, **kwargs):
         raise NotImplementedError
-    
+
     def flickText(self, beginText, endText=None, beginPos=(0.5, 0.5), endPos=(0.5, 0.5), angle=None, distance=1.0, **kwargs):
         raise NotImplementedError
-    
-    
+
+
     # unconfirmed methods
-    
+
     #########################################
     # rotate gestures                       #
     # (sharp begin, curved move, sharp end) #
     #########################################
-    
+
     # arguments
     # centerPos:  center of rotation
     # beginPos:   beginning position of rotation
@@ -262,32 +262,32 @@ class UserInteractionApi(object):
     # beginAngle: beginning angle of rotation
     # direction:  direction of rotation
     # arcAngle:   angle of arc drawn by rotation
-    
+
     def rotate(self, centerPos, beginPos, arcAngle=360, *kwargs):
         raise NotImplementedError
-    
+
     # is offset needed?
-    
+
     def rotateElement(self, element=WORK_AREA, radius=0.8, beginAngle=ANGLE_UP, arcAngle=360, *kwargs):
         raise NotImplementedError
-    
+
     def rotateImage(self, image, radius=0.8, beginAngle=ANGLE_UP, arcAngle=360, *kwargs):
         raise NotImplementedError
-    
+
     # is this variant needed?
     def rotateText(self, text, radius=0.8, beginAngle=ANGLE_UP, arcAngle=360, *kwargs):
         raise NotImplementedError
-    
+
     ############################
     # image and text retrieval #
     ############################
-    
+
     # are these needed, or are element objects enough?
-    
+
     # returns bbox
     def locateImage(self, image, **kwargs):
         raise NotImplementedError
-    
+
     # returns bbox
     def locateText(self, text, **kwargs):
         raise NotImplementedError
