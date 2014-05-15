@@ -1,3 +1,4 @@
+
 * Open Test Robot Platform
 
 ** Prerequisites
@@ -13,9 +14,11 @@
 
 - Sphinx for building documentation (python-sphinx package in Debian/Ubuntu).
 
+- pytest for running tests. 
+
 ** Building and installing
 
-*** TODO Using the platform directly in development environment
+*** Using the platform directly in development environment
     
 **** Running tests
 #+begin_src sh
