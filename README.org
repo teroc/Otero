@@ -22,7 +22,10 @@
 cd tests && python run_tests.py ; cd ..
 #+end_src
 
-If pytest is installed, it can be used instead.
+If pytest is installed, it can be used instead. Just run
+#+begin_src sh
+pytest
+#+end_src
 
 *** Building documentation
 
