@@ -17,6 +17,16 @@
 
 *** TODO Using the platform directly in development environment
     
+**** Running tests
+#+begin_src sh
+cd tests && python run_tests.py ; cd ..
+#+end_src
+
+If pytest is installed, it can be used instead. Just run
+#+begin_src sh
+pytest
+#+end_src
+
 *** Building documentation
 
 #+BEGIN_SRC shell-script
@@ -32,3 +42,5 @@ Normal Python package installation. Run as root
 #+BEGIN_SRC shell-script
 python setup.py install
 #+END_SRC
+
+
