@@ -14,13 +14,20 @@
 
 - Sphinx for building documentation (python-sphinx package in Debian/Ubuntu).
 
-- pytest for running tests. 
+- pytest for running internal tests.
+
+- pylint - python code static checker
 
 ** Building and installing
 
 *** Using the platform directly in development environment
     
-**** Running tests
+**** Preparations
+
+None is required at the moment. Just clone the repository.
+
+**** Running internal tests
+
 #+begin_src sh
 cd tests && python run_tests.py ; cd ..
 #+end_src
@@ -45,5 +52,3 @@ Normal Python package installation. Run as root
 #+BEGIN_SRC shell-script
 python setup.py install
 #+END_SRC
-
-
