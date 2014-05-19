@@ -28,7 +28,12 @@
 import unittest
 import opentestrobot
 import os
-import fmbtgti
+
+try:
+    import fmbtgti
+    g_fmbtAvailable = True
+except ImportError:
+    g_fmbtAvailable = False
 
 moduleDir = os.path.dirname(__file__)
 
@@ -46,6 +51,7 @@ class TestSwEmulation(unittest.TestCase):
         assert lastEvent[2] == args, ('Wrong args, got "%s" expected "%s"' %
                                       (lastEvent[2], args))
 
+    @unittest.skipIf(not g_fmbtAvailable, "fMBT is not available")
     def testTap(self):
         """Test UserInteraction API with simulated software emulation
         """
