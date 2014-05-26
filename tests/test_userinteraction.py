@@ -60,8 +60,8 @@ class TestSwEmulation(unittest.TestCase):
             [os.path.join(moduleDir, "images", "nexus-s-dial.png")]))
 
         ui = opentestrobot.UserInteraction(
-            opentestrobot.gesture.SwEmulation(gti),
-            opentestrobot.vision.SwEmulation(gti))
+            opentestrobot.vision.SwEmulation(gti),
+            opentestrobot.gesture.SwEmulation(gti))
 
         ui.tap((0.5, 0.5)) # tap the middle of the screen
 
