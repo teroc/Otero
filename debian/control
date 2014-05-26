@@ -1,0 +1,15 @@
+Source: opentestrobot
+Maintainer: Antti Kervinen <antti.kervinen@intel.com>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 7.3.8), python (>= 2.6)
+X-Python-Version: >= 2.5
+
+Package: opentestrobot
+Architecture: any
+Depends: python
+Suggests: fmbt
+Description: Python APIs for UI testing with robots
+ opentestrobot provides Python APIs for UI testing with
+ robots and software emulation.
